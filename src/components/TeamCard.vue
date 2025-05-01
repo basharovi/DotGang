@@ -1,44 +1,90 @@
 <script setup>
+import { ref } from 'vue';
+
 defineProps({
   member: {
     type: Object,
     required: true
   }
 });
+
+const rotation = ref({ x: 0, y: 0 });
+const isHovered = ref(false);
+
+const handleMouseMove = (e) => {
+  if (!isHovered.value) return;
+  
+  const card = e.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  
+  const rotateY = ((x - centerX) / centerX) * 5;
+  const rotateX = ((centerY - y) / centerY) * 5;
+  
+  rotation.value = { x: rotateX, y: rotateY };
+};
+
+const resetRotation = () => {
+  rotation.value = { x: 0, y: 0 };
+  isHovered.value = false;
+};
+
+const setHovered = () => {
+  isHovered.value = true;
+};
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
-    <div class="aspect-square overflow-hidden">
+  <div 
+    class="relative bg-white dark:bg-dotgang-surface rounded-xl shadow-md overflow-hidden transition-all duration-300 group hover:shadow-xl"
+    @mousemove="handleMouseMove"
+    @mouseleave="resetRotation"
+    @mouseenter="setHovered"
+    :style="`transform: perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg); transform-style: preserve-3d; transition: transform 0.1s ease-out;`"
+  >
+    <!-- Image container with animated overlay -->
+    <div class="relative aspect-square overflow-hidden">
       <img 
         :src="member.photo" 
         :alt="`Photo of ${member.name}`" 
-        class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
+      
+      <!-- Gradient overlay that appears on hover -->
+      <div class="absolute inset-0 bg-gradient-to-t from-dotgang-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
     
-    <div class="p-6">
-      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
+    <!-- Content area with staggered animation -->
+    <div class="p-6 relative">
+      <!-- Animated accent line -->
+      <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-dotgang-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+      
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1 transform group-hover:translate-y-[-2px] transition-transform duration-300">
         {{ member.name }}
       </h3>
       
-      <div class="flex items-center text-gray-600 dark:text-gray-400 mb-3">
+      <div class="flex items-center text-gray-600 dark:text-gray-400 mb-3 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-75">
         <span>{{ member.designation }}</span>
         <span class="mx-2">•</span>
         <span>{{ member.company }}</span>
       </div>
       
-      <p class="text-gray-600 dark:text-gray-400 mb-4">
+      <p class="text-gray-600 dark:text-gray-400 mb-4 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-150">
         {{ member.description }}
       </p>
       
-      <div class="flex space-x-3">
+      <!-- Social links with hover effects -->
+      <div class="flex space-x-4 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-200">
         <a 
           v-if="member.socials.github" 
           :href="member.socials.github" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-colors" 
+          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all hover:scale-125" 
           aria-label="GitHub Profile"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -51,7 +97,7 @@ defineProps({
           :href="member.socials.linkedin" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-colors" 
+          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all hover:scale-125" 
           aria-label="LinkedIn Profile"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -59,6 +105,18 @@ defineProps({
           </svg>
         </a>
         
+        <a 
+          v-if="member.socials.twitter" 
+          :href="member.socials.twitter" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all hover:scale-125" 
+          aria-label="Twitter Profile"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+          </svg>
+        </a>
       </div>
     </div>
   </div>

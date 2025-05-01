@@ -67,4 +67,22 @@ export const useTeamStore = defineStore('team', {
       return state.members.find(member => member.id === id)
     }
   }
-}) 
+})
+
+// Example of enhanced team member data structure
+team: [
+  {
+    id: 1,
+    name: 'Team Member Name',
+    role: 'Position/Role',
+    bio: 'Short biography or description about the team member.',
+    image: '/path/to/image.jpg',
+    skills: ['Skill 1', 'Skill 2', 'Skill 3'],
+    socials: [
+      { platform: 'twitter', url: 'https://twitter.com/username' },
+      { platform: 'linkedin', url: 'https://linkedin.com/in/username' },
+      { platform: 'github', url: 'https://github.com/username' }
+    ]
+  },
+  // Add more team members...
+]

@@ -6,19 +6,44 @@
   body {
     @apply bg-white dark:bg-dotgang-dark text-gray-900 dark:text-gray-100;
   }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-dotgang-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dotgang-primary/50 rounded-full hover:bg-dotgang-primary;
+  }
 }
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-lg transition-colors;
+    @apply px-5 py-2.5 rounded-lg transition-all duration-300 font-medium relative overflow-hidden shadow-md hover:shadow-lg;
   }
   
   .btn-primary {
-    @apply bg-dotgang-primary text-white hover:bg-blue-600;
+    @apply bg-dotgang-primary text-white hover:bg-dotgang-primary/90 transform hover:-translate-y-1;
   }
   
   .btn-secondary {
-    @apply bg-dotgang-secondary text-white hover:bg-green-600;
+    @apply bg-dotgang-secondary text-white hover:bg-dotgang-secondary/90 transform hover:-translate-y-1;
+  }
+
+  .btn-outline {
+    @apply border-2 border-dotgang-primary text-dotgang-primary hover:bg-dotgang-primary hover:text-white;
+  }
+
+  .btn-accent {
+    @apply bg-dotgang-accent text-white hover:bg-dotgang-accent/90 transform hover:-translate-y-1;
+  }
+  
+  .btn-highlight {
+    @apply bg-dotgang-highlight text-white hover:bg-dotgang-highlight/90 transform hover:-translate-y-1;
   }
   
   .container-custom {
@@ -26,6 +51,123 @@
   }
   
   .section {
-    @apply py-12 md:py-20;
+    @apply py-16 md:py-24;
   }
+
+  .card {
+    @apply bg-white dark:bg-dotgang-surface rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-dotgang-primary to-dotgang-accent;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  .shimmer-bg {
+    @apply relative overflow-hidden before:absolute before:inset-0 
+           before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent 
+           before:animate-shimmer;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+}
+
+/* Custom animations and transitions */
+.staggered-fade-in > * {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: staggered-fade-in 0.5s ease-out forwards;
+}
+
+.staggered-fade-in > *:nth-child(1) { animation-delay: 0.1s; }
+.staggered-fade-in > *:nth-child(2) { animation-delay: 0.2s; }
+.staggered-fade-in > *:nth-child(3) { animation-delay: 0.3s; }
+.staggered-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
+.staggered-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
+.staggered-fade-in > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes staggered-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text reveal animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: theme('colors.dotgang.primary');
+  animation: text-reveal 1.5s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+@keyframes text-reveal {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Custom transition for router */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* 3D tilt effect */
+.tilt-effect {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.tilt-inner {
+  transition: transform 0.3s ease;
+}
+
+/* Typing cursor animation */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
 }

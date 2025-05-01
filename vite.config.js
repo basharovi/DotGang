@@ -24,9 +24,19 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000, // Higher limit for warning about large chunks
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vue-core': ['vue', 'vue-router', 'pinia'],
-          'ui-components': ['./src/components'],
+        manualChunks: (id) => {
+          if (id.includes('node_modules/vue') || 
+              id.includes('node_modules/vue-router') || 
+              id.includes('node_modules/pinia')) {
+            return 'vue-core';
+          }
+          if (id.includes('/components/')) {
+            return 'components';
+          }
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+          return null;
         }
       }
     }
