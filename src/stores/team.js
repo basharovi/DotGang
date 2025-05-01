@@ -5,54 +5,98 @@ export const useTeamStore = defineStore('team', {
     members: [
       {
         id: 1,
-        name: 'John Doe',
-        photo: '/images/team/john-doe.jpg',
-        designation: 'Lead Developer',
-        company: 'Microsoft',
+        name: 'Mahmudul Hasan',
+        photo: '/images/team/mahmudul.jpg',
+        designation: 'Senior Staff Software Engineer',
+        company: 'SELISE Bangladesh',
         description: 'Passionate about democratizing .NET development for new developers.',
         socials: {
-          github: 'https://github.com/johndoe',
-          linkedin: 'https://linkedin.com/in/johndoe',
-          twitter: 'https://twitter.com/johndoe'
+          github: 'https://github.com/mahmudx',
+          linkedin: 'https://linkedin.com/in/mahmudxyz'
         }
       },
       {
         id: 2,
-        name: 'Jane Smith',
-        photo: '/images/team/jane-smith.jpg',
-        designation: 'UI/UX Specialist',
-        company: 'Google',
+        name: 'Bashar Ovi',
+        photo: '/images/team/basharovi.jpg',
+        designation: 'Senior Software Engineer',
+        company: 'Cantaloupe Inc.',
         description: 'Combining beautiful design with .NET functionality to create incredible experiences.',
         socials: {
-          github: 'https://github.com/janesmith',
-          linkedin: 'https://linkedin.com/in/janesmith',
-          twitter: 'https://twitter.com/janesmith'
+          github: 'https://github.com/basharovi',
+          linkedin: 'https://linkedin.com/in/basharovi'
         }
       },
       {
         id: 3,
-        name: 'Alex Johnson',
-        photo: '/images/team/alex-johnson.jpg',
-        designation: '.NET Architect',
-        company: 'Amazon',
+        name: 'Kawsarul Alam',
+        photo: '/images/team/kawsar.jpg',
+        designation: 'Software Engineer L-2',
+        company: 'Vivasoft Ltd.',
         description: 'Building scalable .NET solutions and mentoring the next generation of developers.',
         socials: {
-          github: 'https://github.com/alexjohnson',
-          linkedin: 'https://linkedin.com/in/alexjohnson',
-          twitter: 'https://twitter.com/alexjohnson'
+          github: 'https://github.com/huvo806',
+          linkedin: 'https://linkedin.com/in/shuvo806'
         }
       },
       {
         id: 4,
-        name: 'Sam Williams',
-        photo: '/images/team/sam-williams.jpg',
-        designation: 'Community Leader',
-        company: 'Stack Overflow',
+        name: 'Jahedul Hasan',
+        photo: '/images/team/jahed.jpg',
+        designation: 'Senior Software Engineer',
+        company: 'Kaz Software Ltd.',
         description: 'Passionate about building an inclusive and supportive .NET developer community.',
         socials: {
-          github: 'https://github.com/samwilliams',
-          linkedin: 'https://linkedin.com/in/samwilliams',
-          twitter: 'https://twitter.com/samwilliams'
+          github: 'https://github.com/jahedulhasan',
+          linkedin: 'https://linkedin.com/in/jahedulhasan'
+        }
+      },
+      {
+        id: 5,
+        name: 'Mehedi Hasan',
+        photo: '/images/team/mehedi.jpg',
+        designation: 'Software Engineer L-2',
+        company: 'Vivasoft Ltd.',
+        description: 'Passionate about building an inclusive and supportive .NET developer community.',
+        socials: {
+          github: 'https://github.com/mehedihasansust',
+          linkedin: 'https://linkedin.com/in/mehedihasansust'
+        }
+      },
+      {
+        id: 6,
+        name: 'Hasibur Rahman',
+        photo: '/images/team/evan.jpg',
+        designation: 'Software Engineer L-2',
+        company: 'Vivasoft Ltd.',
+        description: 'Passionate about building an inclusive and supportive .NET developer community.',
+        socials: {
+          github: 'https://github.com/evan-shareef',
+          linkedin: 'https://linkedin.com/in/evan-shareef'
+        }
+      },
+      {
+        id: 7,
+        name: 'Arfizur Rahman',
+        photo: '/images/team/arfiz.jpg',
+        designation: 'Senior Software Engineer',
+        company: 'Stealth Startup',
+        description: 'Passionate about building an inclusive and supportive .NET developer community.',
+        socials: {
+          github: 'https://github.com/arfizur-rahman',
+          linkedin: 'https://linkedin.com/in/arfizur-rahman'
+        }
+      },
+      {
+        id: 8,
+        name: 'Khairul Alam',
+        photo: '/images/team/khairul.jpg',
+        designation: 'Staff Software Engineer',
+        company: 'Vivasoft Ltd.',
+        description: 'Passionate about building an inclusive and supportive .NET developer community.',
+        socials: {
+          github: 'https://github.com/khairultaher',
+          linkedin: 'https://linkedin.com/in/khairultaher'
         }
       }
     ]
@@ -68,21 +112,3 @@ export const useTeamStore = defineStore('team', {
     }
   }
 })
-
-// Example of enhanced team member data structure
-team: [
-  {
-    id: 1,
-    name: 'Team Member Name',
-    role: 'Position/Role',
-    bio: 'Short biography or description about the team member.',
-    image: '/path/to/image.jpg',
-    skills: ['Skill 1', 'Skill 2', 'Skill 3'],
-    socials: [
-      { platform: 'twitter', url: 'https://twitter.com/username' },
-      { platform: 'linkedin', url: 'https://linkedin.com/in/username' },
-      { platform: 'github', url: 'https://github.com/username' }
-    ]
-  },
-  // Add more team members...
-]
