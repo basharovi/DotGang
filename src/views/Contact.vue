@@ -150,7 +150,7 @@ const socialLinks = [
                   </div>
                   <div>
                     <h3 class="text-lg font-semibold mb-1">Location</h3>
-                    <p class="text-gray-700 dark:text-gray-300">Virtual community with meetups in various cities.</p>
+                    <p class="text-gray-700 dark:text-gray-300">Dhaka, Bangladesh.</p>
                   </div>
                 </div>
               </div>

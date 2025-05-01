@@ -6,7 +6,7 @@ const events = ref([
   {
     id: 1,
     title: "Tech Adda: Modern .NET Development",
-    date: "2023-06-15T18:00:00",
+    date: "2025-06-15T18:00:00",
     location: "Virtual (Zoom)",
     description: "Join us for our monthly Tech Adda where we'll discuss modern .NET development practices, tools, and frameworks. This session will focus on .NET 7 features and performance optimizations.",
     image: "/images/events/modern-dotnet.jpg",
@@ -16,7 +16,7 @@ const events = ref([
   {
     id: 2,
     title: "DotCast: Blazor WebAssembly Deep Dive",
-    date: "2023-06-28T14:00:00",
+    date: "2025-06-28T14:00:00",
     location: "YouTube Live",
     description: "Our DotCast series continues with an in-depth exploration of Blazor WebAssembly. Learn how to build interactive web UIs using C# instead of JavaScript with our expert panel.",
     image: "/images/events/blazor-webassembly.jpg",
@@ -26,8 +26,8 @@ const events = ref([
   {
     id: 3,
     title: "Hands-on Workshop: Building Microservices with .NET",
-    date: "2023-07-10T10:00:00",
-    location: "Microsoft Office, New York",
+    date: "2025-07-10T10:00:00",
+    location: "Dhaka, Bangladesh.",
     description: "A full-day hands-on workshop where we'll build a complete microservices architecture using .NET, Docker, and Kubernetes. Limited spots available!",
     image: "/images/events/microservices-workshop.jpg",
     type: "workshop",
@@ -36,22 +36,22 @@ const events = ref([
   {
     id: 4,
     title: "DotGang Community Meetup",
-    date: "2023-05-20T17:30:00",
-    location: "Tech Hub, San Francisco",
+    date: "2025-08-20T17:30:00",
+    location: "Dhaka, Bangladesh.",
     description: "Our monthly in-person community meetup! Come network with fellow .NET developers, share your projects, and enjoy some food and drinks on us.",
     image: "/images/events/community-meetup.jpg",
     type: "meetup",
-    isUpcoming: false
+    isUpcoming: true
   },
   {
     id: 5,
     title: "Contributing to Open Source .NET Projects",
-    date: "2023-05-05T19:00:00",
+    date: "2025-09-05T19:00:00",
     location: "Virtual (Discord)",
     description: "Learn how to find and contribute to open source .NET projects. We'll cover everything from finding beginner-friendly issues to submitting your first pull request.",
     image: "/images/events/open-source.jpg",
     type: "workshop",
-    isUpcoming: false
+    isUpcoming: true
   }
 ]);
 
