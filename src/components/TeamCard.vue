@@ -22,8 +22,8 @@ const handleMouseMove = (e) => {
   const centerX = rect.width / 2;
   const centerY = rect.height / 2;
   
-  const rotateY = ((x - centerX) / centerX) * 5;
-  const rotateX = ((centerY - y) / centerY) * 5;
+  const rotateY = ((x - centerX) / centerX) * 8;
+  const rotateX = ((centerY - y) / centerY) * 8;
   
   rotation.value = { x: rotateX, y: rotateY };
 };
@@ -40,51 +40,68 @@ const setHovered = () => {
 
 <template>
   <div 
-    class="relative bg-white dark:bg-dotgang-surface rounded-xl shadow-md overflow-hidden transition-all duration-300 group hover:shadow-xl"
+    class="relative bg-white dark:bg-dotgang-surface rounded-xl shadow-lg overflow-hidden transition-all duration-300 group hover:shadow-xl border border-gray-100 dark:border-gray-800"
     @mousemove="handleMouseMove"
     @mouseleave="resetRotation"
     @mouseenter="setHovered"
     :style="`transform: perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg); transform-style: preserve-3d; transition: transform 0.1s ease-out;`"
   >
     <!-- Image container with animated overlay -->
-    <div class="relative aspect-square overflow-hidden">
-      <img 
-        :src="member.photo" 
-        :alt="`Photo of ${member.name}`" 
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      />
-      
-      <!-- Gradient overlay that appears on hover -->
-      <div class="absolute inset-0 bg-gradient-to-t from-dotgang-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div class="relative overflow-hidden">
+      <div class="aspect-square overflow-hidden bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+        <img 
+          :src="member.photo" 
+          :alt="`Photo of ${member.name}`" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        
+        <!-- Animated pattern overlay -->
+        <div class="absolute inset-0 opacity-10 bg-dot-pattern"></div>
+        
+        <!-- Gradient overlay that appears on hover -->
+        <div class="absolute inset-0 bg-gradient-to-t from-dotgang-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
     </div>
     
     <!-- Content area with staggered animation -->
     <div class="p-6 relative">
-      <!-- Animated accent line -->
-      <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-dotgang-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+      <!-- Professional top line accent -->
+      <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-dotgang-primary via-dotgang-secondary to-dotgang-accent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
       
-      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1 transform group-hover:translate-y-[-2px] transition-transform duration-300">
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transform group-hover:translate-y-[-2px] transition-transform duration-300 pb-2 border-b border-gray-100 dark:border-gray-800">
         {{ member.name }}
       </h3>
       
-      <div class="flex items-center text-gray-600 dark:text-gray-400 mb-3 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-75">
-        <span>{{ member.designation }}</span>
-        <span class="mx-2">•</span>
+      <!-- Separate lines for designation and company -->
+      <div class="mb-1 flex items-center text-gray-700 dark:text-gray-300 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-75">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-dotgang-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span class="font-medium">{{ member.designation }}</span>
+      </div>
+      
+      <div class="mb-4 flex items-center text-gray-600 dark:text-gray-400 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-dotgang-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
         <span>{{ member.company }}</span>
       </div>
       
-      <p class="text-gray-600 dark:text-gray-400 mb-4 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-150">
-        {{ member.description }}
-      </p>
+      <!-- Description with more professional styling -->
+      <div class="bg-gray-50 dark:bg-gray-800/50 p-3 rounded-md mb-4 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-150 text-sm border-l-2 border-dotgang-primary/50">
+        <p class="text-gray-600 dark:text-gray-400">
+          {{ member.description }}
+        </p>
+      </div>
       
-      <!-- Social links with hover effects -->
-      <div class="flex space-x-4 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-200">
+      <!-- Social links with refined styling -->
+      <div class="flex space-x-3 transform group-hover:translate-y-[-2px] transition-transform duration-300 delay-200">
         <a 
           v-if="member.socials.github" 
           :href="member.socials.github" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all hover:scale-125" 
+          class="text-gray-600 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:scale-110 hover:shadow-sm" 
           aria-label="GitHub Profile"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -97,7 +114,7 @@ const setHovered = () => {
           :href="member.socials.linkedin" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all hover:scale-125" 
+          class="text-gray-600 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:scale-110 hover:shadow-sm" 
           aria-label="LinkedIn Profile"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -110,7 +127,7 @@ const setHovered = () => {
           :href="member.socials.twitter" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all hover:scale-125" 
+          class="text-gray-600 hover:text-dotgang-primary dark:text-gray-400 dark:hover:text-dotgang-primary transition-all bg-gray-100 dark:bg-gray-800 p-2 rounded-full hover:scale-110 hover:shadow-sm" 
           aria-label="Twitter Profile"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">

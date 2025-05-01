@@ -73,8 +73,8 @@ onUnmounted(() => {
       <!-- Logo -->
       <router-link to="/" class="flex items-center space-x-2 group">
         <div class="flex items-center">
-          <span class="text-dotgang-primary font-mono text-2xl font-bold transition-transform group-hover:scale-105">
-            &lt;Dot<span class="text-white dark:text-white">Gang/&gt;</span>
+          <span class="font-mono text-2xl font-bold transition-transform group-hover:scale-105">
+            <span class="text-dotgang-primary">&lt;Dot</span><span class="text-gray-800 dark:text-white">Gang</span><span class="text-dotgang-primary">/&gt;</span>
           </span>
         </div>
       </router-link>
@@ -97,7 +97,7 @@ onUnmounted(() => {
           </router-link>
         </div>
 
-        <!-- Dark Mode Toggle -->
+        <!-- Dark Mode Toggle with enhanced styling -->
         <button 
           @click="themeStore.toggleDarkMode" 
           class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-500 hover:scale-110"
@@ -150,7 +150,7 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu with enhanced styling -->
     <div 
       class="md:hidden bg-white dark:bg-dotgang-dark shadow-lg overflow-hidden transition-all duration-300 max-h-0"
       :class="{ 'max-h-[500px] border-t border-gray-100 dark:border-gray-800': isMenuOpen }"
@@ -162,9 +162,13 @@ onUnmounted(() => {
             :key="link.name"
             :to="link.path"
             @click="isMenuOpen = false"
-            class="py-4 px-4 border-b border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-200 hover:text-dotgang-primary dark:hover:text-dotgang-primary transition-colors"
-            :class="{ 'text-dotgang-primary bg-gray-50 dark:bg-gray-900': isActive(link.path) }"
+            class="py-4 px-4 border-b border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-dotgang-primary dark:hover:text-dotgang-primary transition-colors flex items-center"
+            :class="{ 'text-dotgang-primary bg-gray-50 dark:bg-gray-800 font-medium': isActive(link.path) }"
           >
+            <span 
+              class="w-1 h-6 rounded-r-full mr-3 transition-all duration-300" 
+              :class="isActive(link.path) ? 'bg-dotgang-primary' : 'bg-transparent'"
+            ></span>
             {{ link.name }}
           </router-link>
         </div>

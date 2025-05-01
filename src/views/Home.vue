@@ -81,22 +81,43 @@ onBeforeUnmount(() => {
     
     <!-- Hero Section -->
     <section class="relative overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-br from-dotgang-dark via-dotgang-surface to-black">
-      <!-- Animated particles -->
-      <div class="absolute top-0 left-0 w-full h-full opacity-20">
-        <div v-for="i in 50" :key="i" 
-            class="absolute rounded-full bg-dotgang-primary" 
-            :style="{
-              width: `${Math.random() * 8 + 2}px`, 
-              height: `${Math.random() * 8 + 2}px`,
-              left: `${Math.random() * 100}%`, 
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.7 + 0.3,
-              animation: `float ${Math.random() * 10 + 10}s infinite linear`
-            }">
+      <!-- C# and .NET code background pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <!-- C# code snippets scattered around -->
+        <div class="absolute top-[10%] left-[5%] font-mono text-xl text-dotgang-primary opacity-40 select-none">using System;</div>
+        <div class="absolute top-[15%] left-[8%] font-mono text-xl text-white opacity-30 select-none">namespace DotGang {</div>
+        <div class="absolute top-[20%] left-[12%] font-mono text-lg text-white opacity-30 select-none">public class Community {</div>
+        <div class="absolute top-[25%] left-[16%] font-mono text-lg text-dotgang-secondary opacity-30 select-none">public void Connect() { }</div>
+        <div class="absolute top-[30%] left-[16%] font-mono text-lg text-dotgang-accent opacity-30 select-none">public void Build() { }</div>
+        <div class="absolute top-[35%] left-[16%] font-mono text-lg text-dotgang-primary opacity-30 select-none">public void Innovate() { }</div>
+        <div class="absolute top-[40%] left-[12%] font-mono text-lg text-white opacity-30 select-none">}</div>
+        <div class="absolute top-[45%] left-[8%] font-mono text-lg text-white opacity-30 select-none">}</div>
+        
+        <div class="absolute top-[12%] right-[8%] font-mono text-xl text-dotgang-primary opacity-40 select-none">using Microsoft.AspNetCore;</div>
+        <div class="absolute top-[17%] right-[12%] font-mono text-lg text-white opacity-30 select-none">var builder = WebApplication.CreateBuilder();</div>
+        <div class="absolute top-[22%] right-[12%] font-mono text-lg text-dotgang-secondary opacity-30 select-none">builder.Services.AddDotGang();</div>
+        <div class="absolute top-[27%] right-[12%] font-mono text-lg text-dotgang-accent opacity-30 select-none">var app = builder.Build();</div>
+        <div class="absolute top-[32%] right-[12%] font-mono text-lg text-white opacity-30 select-none">app.Run();</div>
+        
+        <!-- .NET logo elements -->
+        <div class="absolute top-[60%] left-[15%] w-32 h-32 border-4 border-dotgang-primary/20 rounded-full"></div>
+        <div class="absolute bottom-[15%] right-[20%] w-48 h-48 border-8 border-dotgang-accent/10 rounded-full"></div>
+        
+        <!-- C# symbols -->
+        <div class="absolute bottom-[30%] left-[10%] font-mono text-6xl text-dotgang-primary opacity-10 select-none">{</div>
+        <div class="absolute top-[20%] right-[30%] font-mono text-7xl text-dotgang-accent opacity-10 select-none">}</div>
+        <div class="absolute bottom-[25%] right-[35%] font-mono text-5xl text-dotgang-secondary opacity-10 select-none">;</div>
+        <div class="absolute top-[55%] left-[30%] font-mono text-5xl text-white opacity-10 select-none">()</div>
+        
+        <!-- .NET logo in center background -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 456 456" class="text-dotgang-primary">
+            <path fill="currentColor" d="M81.2 291.6c-5.2 0-10-1.4-14.4-4.1-4.4-2.7-7.9-6.6-10.4-11.7-2.5-5.1-3.7-11-3.7-17.8 0-6.9 1.3-12.9 3.9-18 2.6-5.1 6.2-9 10.8-11.8 4.6-2.8 9.8-4.2 15.6-4.2 5 0 9.1.8 12.4 2.3 3.3 1.5 5.8 3.7 7.6 6.5 1.8 2.8 2.7 6 2.7 9.6h-14.9c0-2.7-.9-4.8-2.7-6.4-1.8-1.6-4.3-2.4-7.5-2.4-3 0-5.5.8-7.5 2.5-2.1 1.7-3.6 4-4.7 7.1-1.1 3.1-1.6 6.7-1.6 10.9v2.2c0 4 .5 7.5 1.5 10.5 1 3 2.6 5.3 4.7 7 2.1 1.7 4.8 2.5 8 2.5 3.6 0 6.3-.9 8.3-2.6 2-1.7 3-4.1 3-7h14.9c0 3.7-1 7-3 9.9-2 2.9-4.9 5.2-8.6 6.9-3.7 1.7-8.2 2.6-13.4 2.6zM140.1 290.6l-15.2-34.9v34.9h-15.2v-66.7h20.5l15.2 34.9v-34.9h15.3v66.7h-20.6zM184.1 290.6v-66.7h41.6v12.4h-26.6v15.1h21.6v11.9h-21.6v14.8h26.6v12.4h-41.6zM253.1 290.6v-66.7h18.4c6.6 0 12.4 1.4 17.5 4.1 5.1 2.7 9.1 6.6 12 11.7 2.9 5.1 4.3 11.1 4.3 18v3.1c0 6.7-1.4 12.5-4.1 17.5-2.7 5-6.6 8.9-11.5 11.6-4.9 2.7-10.5 4.1-16.9 4.1l-19.7.6zm15.1-54.3v42.1h4.1c4.4 0 7.6-1.4 9.8-4.2 2.2-2.8 3.3-7.1 3.3-12.9v-7.9c0-6-1.1-10.4-3.3-13.2-2.2-2.8-5.5-4.2-9.8-4.2l-4.1.3zM351.5 290.6l-7.5-24.7h-11.9l-7.5 24.7h-15.8l16.9-66.7h24.5l17 66.7h-15.7zm-15.8-37.3l-2.5 8h8.9l-2.5-8c-.6-1.9-1.1-4.2-1.6-6.8-.5-2.6-.9-4.8-1.2-6.5-.2 1.7-.6 3.9-1.1 6.5-.5 2.6-1 4.9-1.6 6.8zM361.9 290.6v-66.7h18.4c6.6 0 12.3 1.4 17.2 4.1s8.7 6.6 11.3 11.7c2.6 5.1 3.9 11.1 3.9 18v3.1c0 6.9-1.3 12.8-3.9 17.8-2.6 5-6.3 8.9-11.1 11.6-4.8 2.7-10.5 4.1-17.1 4.1l-18.7.3zm15-54.3v42.1h3.6c4.6 0 8-1.4 10.3-4.2 2.3-2.8 3.4-7.1 3.4-12.9v-7.9c0-6-1.1-10.4-3.4-13.2-2.3-2.8-5.8-4.2-10.5-4.2l-3.4.3z" />
+          </svg>
         </div>
       </div>
       
-      <!-- Network grid effect (optional) -->
+      <!-- Network grid effect -->
       <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
       <div class="container-custom relative z-10 text-center">
@@ -133,20 +154,28 @@ onBeforeUnmount(() => {
         </div>
       </div>
       
-      <!-- Decorative code blocks in background -->
-      <div class="absolute bottom-5 left-5 max-w-xs p-4 rounded-lg glass-effect opacity-30 hidden md:block transform rotate-2">
-        <pre class="text-xs text-dotgang-primary font-mono">
+      <!-- Decorative C# code blocks -->
+      <div class="absolute bottom-8 left-8 max-w-xs p-4 rounded-lg glass-effect shadow-lg opacity-60 hidden md:block transform rotate-2">
+        <pre class="text-xs text-dotgang-primary font-mono overflow-hidden">
+<span class="text-dotgang-highlight">using</span> System;
 <span class="text-dotgang-highlight">using</span> DotGang.Community;
 
-<span class="text-dotgang-accent">var</span> developer = <span class="text-dotgang-accent">new</span> Developer();
-developer.JoinCommunity(DotGang);
+<span class="text-dotgang-accent">public class</span> <span class="text-white">Developer</span>
+{
+    <span class="text-dotgang-accent">public void</span> <span class="text-dotgang-secondary">Join</span>()
+    {
+        <span class="text-dotgang-highlight">var</span> community = <span class="text-dotgang-accent">new</span> DotGang();
+        community.Welcome(<span class="text-dotgang-highlight">this</span>);
+    }
+}
         </pre>
       </div>
       
-      <div class="absolute top-20 right-10 max-w-xs p-4 rounded-lg glass-effect opacity-30 hidden md:block transform -rotate-3">
-        <pre class="text-xs text-dotgang-secondary font-mono">
-<span class="text-dotgang-highlight">// .NET is our passion</span>
-DotGang.CreateAwesome();
+      <div class="absolute top-12 right-12 max-w-xs p-4 rounded-lg glass-effect shadow-lg opacity-60 hidden md:block transform -rotate-3">
+        <pre class="text-xs text-dotgang-secondary font-mono overflow-hidden">
+<span class="text-gray-300">// The .NET community you've been looking for</span>
+<span class="text-dotgang-primary">dotnet</span> <span class="text-dotgang-accent">add</span> package DotGang.Awesome
+<span class="text-dotgang-primary">dotnet</span> <span class="text-dotgang-accent">run</span> --community
         </pre>
       </div>
     </section>
